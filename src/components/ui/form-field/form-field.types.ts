@@ -7,6 +7,6 @@ export interface FormFieldProps {
   className?: string;
   htmlFor?: string;
   helperText?: string;
-  isRequired?: boolean;
+  required?: boolean;
   children: ReactNode;
 }
