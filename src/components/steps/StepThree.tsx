@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import FormField from '@/components/ui/form-field/FormField'
 import { Select } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
 import { useFormStore } from '@/hooks/use-form-store'
@@ -29,7 +28,7 @@ export function StepThree() {
     watch,
     setValue,
     handleSubmit,
-    formState: { errors, isValid }
+    formState: { isValid }
   } = useForm<FormData>({
     resolver: zodResolver(schema),
     mode: 'onChange',

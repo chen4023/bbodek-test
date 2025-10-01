@@ -3,7 +3,7 @@
 import { forwardRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { inputVariants } from './input.variants'
-import type { InputProps } from './input.types'
+import type { InputProps } from './input.type'
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, disabled, value, onChange, error, ...props }, ref) => {

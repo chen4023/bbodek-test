@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import { selectVariants } from './select.variants'
-import type { SelectProps } from './select.type'
+import type { SelectProps, SelectOption } from './select.type'
 
 export function Select({
   options,
@@ -20,7 +20,7 @@ export function Select({
 
   return (
     <div className={cn('space-y-3', className)} role="radiogroup" id={id}>
-      {options.map((option) => {
+      {options.map((option: SelectOption) => {
         const isSelected = value === option.value
         const isDisabled = disabled || option.disabled
 

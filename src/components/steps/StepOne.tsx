@@ -73,7 +73,7 @@ export function StepOne() {
           placeholder="김뽀득"
           error={!!errors.kidName}
           {...register('kidName')}
-          onChange={(e) => handleNameInput(e, 'kidName')}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleNameInput(e, 'kidName')}
         />
       </FormField>
 
@@ -82,7 +82,7 @@ export function StepOne() {
           placeholder="홍길동"
           error={!!errors.parentName}
           {...register('parentName')}
-          onChange={(e) => handleNameInput(e, 'parentName')}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleNameInput(e, 'parentName')}
         />
       </FormField>
 

@@ -59,7 +59,7 @@ type FormData = z.infer<typeof schema>
 
 export function StepFour() {
   const router = useRouter()
-  const { formData, updateFormData, resetForm } = useFormStore()
+  const { formData, resetForm } = useFormStore()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const {

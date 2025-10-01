@@ -3,12 +3,11 @@
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { FormData, useFormStore } from '@/hooks/use-form-store'
+import { FormData } from '@/hooks/use-form-store'
 import Image from 'next/image'
 
 export default function SuccessPage() {
   const router = useRouter()
-  const { formData } = useFormStore()
   const [displayData, setDisplayData] = useState<FormData | null>(null)
 
   useEffect(() => {
@@ -16,8 +15,6 @@ export default function SuccessPage() {
     const stored = sessionStorage.getItem('submittedData')
     if (stored) {
       setDisplayData(JSON.parse(stored))
-    } else if (formData) {
-      setDisplayData(formData as FormData)
     }
   }, [])
 

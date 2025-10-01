@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import type { SelectBoxProps } from './select.type'
 import { selectVariants } from './select.variants'
-import { Select } from './Select'
 
 export function SelectBox({
   options,
@@ -14,25 +13,13 @@ export function SelectBox({
   disabled = false,
   className,
   name,
-  required = false,
   id,
 }: SelectBoxProps) {
 
   const [isOpen, setIsOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  const getState = () => {
-    if (disabled) return 'disabled'
-    if (value) return 'filled'
-    return 'default'
-  }
-
   const selectedOption = options.find(opt => opt.value === value)
-
-  const handleSelect = (optionValue: string) => {
-    onChange?.(optionValue)
-    setIsOpen(false)
-  }
 
   const onClose = () => {
     setIsOpen(false)
@@ -84,7 +71,7 @@ export function SelectBox({
         disabled={disabled}
         onClick={() => !disabled && setIsOpen(!isOpen)}
         className={cn(
-          selectVariants({ state: getState() }),
+          selectVariants({ selected: !!value, disabled }),
           className
         )}
       >
@@ -148,7 +135,7 @@ export function SelectBox({
                       <button
                         type="button"
                         disabled={isDisabled}
-                        onClick={() => { if (!isDisabled) { onChange(opt.value); onClose(); } }}
+                        onClick={() => { if (!isDisabled && onChange) { onChange(opt.value); onClose(); } }}
                         className={cn(selectVariants({ selected, disabled: isDisabled }))}
                         aria-pressed={selected}
                       >

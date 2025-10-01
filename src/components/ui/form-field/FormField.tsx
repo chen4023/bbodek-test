@@ -12,7 +12,8 @@ export default function FormField({
   required = false,
   children,
 }: FormFieldProps) {
-  const id = htmlFor ?? useId();
+  const generatedId = useId();
+  const id = htmlFor ?? generatedId;
 
   return (
     <div className={cn("relative w-full", className)}>
