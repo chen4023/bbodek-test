@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${pretendard.className} antialiased`}>
-      <body className="bg-white text-black min-w-[360px] max-w-[480px] mx-auto">
+      <body className="bg-white text-black min-w-[360px] max-w-[480px] mx-auto p-5">
         {children}
       </body>
     </html>
