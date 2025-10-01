@@ -128,8 +128,8 @@ export function SelectBox({
           />
 
           {/* 바텀시트 */}
-          <div className="fixed bottom-0 left-0 right-0 z-50 animate-slide-up">
-            <div className="bg-white rounded-t-3xl shadow-lg min-h-[80vh] max-h-[80vh] overflow-hidden">
+          <div className="fixed bottom-0 left-0 right-0 z-50 max-w-[460px] mx-auto animate-slide-up">
+            <div className="bg-white rounded-t-3xl shadow-lg min-h-[90vh] max-h-[100vh] overflow-hidden">
               {/* 헤더 */}
               <div className="sticky top-0 bg-white px-6 py-4 border-gray-100">
                 <h3 className="text-lg font-bold text-black text-center">
