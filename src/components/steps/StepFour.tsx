@@ -12,14 +12,54 @@ import { useState } from 'react'
 import { registerKid } from '@/api/kid.actions'
 
 const schema = z.object({
-  serviceStartDate: z.string().min(1, '서비스 시작일을 입력해주세요'),
+  serviceStartDate: z
+    .string()
+    .min(1, '서비스 시작일을 입력해주세요')
+    .refine((date) => {
+      // 날짜 형식 검증
+      const dateRegex = /^\d{4}-\d{2}-\d{2}$/
+      if (!dateRegex.test(date)) {
+        return false
+      }
+
+      // 유효한 날짜인지 확인
+      const inputDate = new Date(date)
+      if (isNaN(inputDate.getTime())) {
+        return false
+      }
+
+      // 입력한 날짜가 실제로 존재하는 날짜인지 확인 (예: 2025-13-13은 불가)
+      const [year, month, day] = date.split('-').map(Number)
+      if (
+        inputDate.getFullYear() !== year ||
+        inputDate.getMonth() + 1 !== month ||
+        inputDate.getDate() !== day
+      ) {
+        return false
+      }
+
+      return true
+    }, {
+      message: '유효한 날짜를 입력해 주세요'
+    })
+    .refine((date) => {
+      // 오늘 이후의 날짜인지 확인
+      const today = new Date()
+      today.setHours(0, 0, 0, 0)
+      const inputDate = new Date(date)
+      inputDate.setHours(0, 0, 0, 0)
+
+      return inputDate >= today
+    }, {
+      message: '오늘 이후의 날짜로 입력해 주세요'
+    })
 })
 
 type FormData = z.infer<typeof schema>
 
 export function StepFour() {
   const router = useRouter()
-  const { formData, updateFormData, prevStep, resetForm } = useFormStore()
+  const { formData, updateFormData, resetForm } = useFormStore()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const {
@@ -77,10 +117,6 @@ export function StepFour() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <button type="button" onClick={prevStep} className="text-gray-300 text-sm">
-        ← 이전
-      </button>
-
       <h1 className="text-lg font-bold">언제부터 뽀득을 이용할까요?</h1>
 
       <FormField label="서비스 시작일" required error={errors.serviceStartDate?.message}>
@@ -98,7 +134,7 @@ export function StepFour() {
         isLoading={isSubmitting}
         disabled={!serviceStartDate || !isValid}
       >
-        신청 완료
+        신청 완료!
       </Button>
     </form>
   )
