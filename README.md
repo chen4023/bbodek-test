@@ -51,12 +51,11 @@ src/
 ├─ hooks/
 │  └─ use-form-store.ts             # Zustand 스토어
 │
-├─ lib/
-│  ├─ utils.ts                      # cn 유틸리티
-│  └─ formatters.ts                 # 포맷팅 함수 (전화번호 등)
-│
-└─ types/
-   └─ *.types.ts                    # TypeScript 타입 정의
+└─ lib/
+  ├─ utils.ts                      # cn 유틸리티
+  ├─ fonts.ts                      # font
+  └─ formatters.ts                 # 포맷팅 함수 (전화번호 등)
+
 ```
 
 ## 🎨 디자인 시스템
