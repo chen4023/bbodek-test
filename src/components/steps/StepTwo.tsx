@@ -108,7 +108,7 @@ export function StepTwo() {
 
       <FormField label="기관명" required error={errors.kindergartenUUID?.message}>
         <SelectBox
-          placeholder="기관명*"
+          placeholder="아이가 다니는 기관을 알려주세요"
           options={kindergartens}
           value={selectedKindergarten}
           onChange={(value) => {
@@ -120,7 +120,7 @@ export function StepTwo() {
 
       <FormField label="반이름" required error={errors.roomUUID?.message}>
         <SelectBox
-          placeholder="뽀득나라 유치원"
+          placeholder="반이름을 선택해주세요"
           options={rooms}
           value={selectedRoom}
           onChange={(value) => setValue('roomUUID', value, { shouldValidate: true })}
