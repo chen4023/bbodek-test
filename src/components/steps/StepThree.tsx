@@ -22,7 +22,7 @@ interface SelectOption {
 }
 
 export function StepThree() {
-  const { formData, updateFormData, nextStep, prevStep } = useFormStore()
+  const { formData, updateFormData, nextStep } = useFormStore()
   const [packages, setPackages] = useState<SelectOption[]>([])
 
   const {
@@ -69,15 +69,7 @@ export function StepThree() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <button
-        type="button"
-        onClick={prevStep}
-        className="text-gray-300 text-sm"
-      >
-        ← 이전
-      </button>
-
-      <h1 className="text-lg font-bold">아이가 다니는 기관을 알려주세요</h1>
+      <h1 className="text-lg font-bold">어떤 식기를 이용할까요?</h1>
       <Select
         options={packages}
         value={selectedPackage}
