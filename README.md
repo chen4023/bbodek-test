@@ -6,15 +6,12 @@
 
 ```bash
 # 1) 의존성 설치
-npm install
+pnpm install
 
 # 2) 개발 서버 실행
-npm run dev
+pnpm run dev
 # http://localhost:3000
 
-# 3) 빌드 / 프로덕션 실행
-npm run build
-npm start
 ```
 
 ## 📁 프로젝트 구조
